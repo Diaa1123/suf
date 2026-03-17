@@ -1,12 +1,34 @@
 {
-  "name": "theme-raed",
-  "version": "1.0.3",
-  "description": "Salla Theme",
+  "name": "sufrah-restaurant-theme",
+  "version": "1.0.0",
+  "description": "سُفرة (Sufrah) - A specialized Salla theme for restaurants, cafes, bakeries, and food businesses. Built on Raed template with mobile-first, RTL-native approach.",
   "license": "MIT",
+  "author": {
+    "name": "Diaa Alkilany",
+    "email": "diaalkilany@gmail.com",
+    "url": "https://github.com/Diaa1123"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SallaApp/theme-raed.git"
+    "url": "git+https://github.com/Diaa1123/suf.git"
   },
+  "bugs": {
+    "url": "https://github.com/Diaa1123/suf/issues",
+    "email": "diaalkilany@gmail.com"
+  },
+  "homepage": "https://github.com/Diaa1123/suf#readme",
+  "keywords": [
+    "salla",
+    "theme",
+    "restaurant",
+    "food",
+    "cafe",
+    "bakery",
+    "rtl",
+    "arabic",
+    "twilight",
+    "ecommerce"
+  ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,7 +37,6 @@
     "development": "webpack --mode development",
     "watch": "webpack --mode development --watch"
   },
-  "author": "Salla",
   "dependencies": {
     "@babel/runtime": "^7.28.6",
     "animejs": "^3.2.1",
