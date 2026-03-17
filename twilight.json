@@ -418,7 +418,7 @@
                     "label": "صورة الخلفية (Desktop & Tablet)",
                     "description": "المقاس المناسب: 1920×800 بكسل للحصول على أفضل جودة",
                     "icon": "sicon-image",
-                    "required": true,
+                    "required": false,
                     "value": "https://cdn.salla.sa/form-builder/lrXv3BQEhoF7ZDrmjQMztVvPvb8L0iMgz8VnZjNb.jpg"
                 },
                 {
@@ -618,7 +618,7 @@
                             "key": "align-end"
                         }
                     ],
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "content_vertical",
@@ -651,7 +651,7 @@
                             "key": "vertical-bottom"
                         }
                     ],
-                    "required": true
+                    "required": false
                 },
                 {
                     "type": "static",
