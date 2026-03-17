@@ -12,11 +12,11 @@
 #}
 
 {# تحديد نمط العرض #}
-{% set layout = component.layout ?? 'grid' %}
+{% set layout = component.layout.value ?? component.layout ?? 'grid' %}
 {% set perRow = component.per_row ?? 4 %}
 {% set showDescription = component.show_description ?? true %}
 {% set descLength = component.description_length ?? 100 %}
-{% set imageRatio = component.image_ratio ?? '1:1' %}
+{% set imageRatio = component.image_ratio.value ?? component.image_ratio ?? '1:1' %}
 {% set spacing = component.spacing ?? 20 %}
 {% set hoverEffect = component.hover_effect ?? true %}
 {% set showTags = component.show_tags ?? true %}
@@ -24,7 +24,7 @@
 {# CSS Classes حسب الإعدادات #}
 {% set layoutClass = 'products-layout-' ~ layout %}
 {% set perRowClass = 'products-per-row-' ~ perRow %}
-{% set imageRatioClass = 'products-ratio-' ~ (imageRatio | replace({':': '-'})) %}
+{% set imageRatioClass = 'products-ratio-' ~ (imageRatio|replace({':': '-'})) %}
 {% set hoverClass = hoverEffect ? 'products-with-hover' : 'products-no-hover' %}
 
 <section class="products-section {{ layoutClass }} {{ perRowClass }} {{ imageRatioClass }} {{ hoverClass }}"

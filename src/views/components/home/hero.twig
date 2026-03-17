@@ -15,7 +15,7 @@
 {% set heroImageMobile = component.background_image_mobile ?? heroImage %}
 
 {# تحديد نسبة العرض (aspect ratio) #}
-{% set aspectRatio = component.aspect_ratio ?? '16:9' %}
+{% set aspectRatioValue = component.aspect_ratio.value ?? component.aspect_ratio ?? '16:9' %}
 {% set aspectRatios = {
     '16:9': 'aspect-ratio-16-9',
     '21:9': 'aspect-ratio-21-9',
@@ -24,8 +24,8 @@
 } %}
 
 {# تحديد محاذاة المحتوى #}
-{% set contentAlign = component.content_align ?? 'center' %}
-{% set contentVertical = component.content_vertical ?? 'center' %}
+{% set contentAlignValue = component.content_align.value ?? component.content_align ?? 'center' %}
+{% set contentVerticalValue = component.content_vertical.value ?? component.content_vertical ?? 'center' %}
 
 {# الألوان #}
 {% set textColor = component.text_color ?? '#ffffff' %}
@@ -37,8 +37,8 @@
 {# ارتفاع الموبايل #}
 {% set mobileHeight = component.height_mobile ?? 450 %}
 
-<section class="hero-section {{ aspectRatios[aspectRatio] ?? aspectRatios['16:9'] }}"
-         data-aspect-ratio="{{ aspectRatio }}"
+<section class="hero-section {{ aspectRatios[aspectRatioValue] ?? aspectRatios['16:9'] }}"
+         data-aspect-ratio="{{ aspectRatioValue }}"
          style="--hero-mobile-height: {{ mobileHeight }}px; --hero-text-color: {{ textColor }};">
 
     {# صورة الخلفية #}
@@ -65,8 +65,8 @@
     {# محتوى الـ Hero #}
     <div class="container">
         <div class="hero-content"
-             data-align="{{ contentAlign }}"
-             data-vertical="{{ contentVertical }}">
+             data-align="{{ contentAlignValue }}"
+             data-vertical="{{ contentVerticalValue }}">
 
             {# العنوان الرئيسي #}
             {% if component.title %}
