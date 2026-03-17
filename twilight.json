@@ -240,6 +240,357 @@
     ],
     "components": [
         {
+            "key": "hero-sufrah-2026",
+            "title": {
+                "ar": "القسم الرئيسي (Hero) - سُفرة",
+                "en": "Hero Section - Sufrah"
+            },
+            "icon": "sicon-image",
+            "path": "home.hero",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "hero-preview",
+                    "value": "<div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 24px; border-radius: 12px; color: white; text-align: center; margin-bottom: 20px;'><h3 style='margin: 0 0 8px 0; font-size: 18px; font-weight: bold;'>🍽️ القسم الرئيسي للمطاعم</h3><p style='margin: 0; font-size: 14px; opacity: 0.9;'>صورة خلفية كبيرة مع عنوان وزر - مثالي لعرض الأطباق المميزة</p></div>"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-images",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #4299e1; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>📸 إعدادات الصورة</h6></div>"
+                },
+                {
+                    "id": "background_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة الخلفية (Desktop & Tablet)",
+                    "description": "المقاس المناسب: 1920×800 بكسل للحصول على أفضل جودة",
+                    "icon": "sicon-image",
+                    "required": true,
+                    "value": "https://cdn.salla.sa/form-builder/lrXv3BQEhoF7ZDrmjQMztVvPvb8L0iMgz8VnZjNb.jpg"
+                },
+                {
+                    "id": "background_image_mobile",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة الموبايل (اختياري)",
+                    "description": "صورة مخصصة للموبايل - المقاس المناسب: 800×600 بكسل. إذا تركت فارغة، ستُستخدم صورة Desktop",
+                    "icon": "sicon-mobile",
+                    "required": false,
+                    "value": null
+                },
+                {
+                    "id": "aspect_ratio",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نسبة العرض للصورة",
+                    "description": "تحديد نسبة العرض إلى الارتفاع",
+                    "icon": "sicon-crop",
+                    "selected": [
+                        {
+                            "label": "16:9 (عريض - موصى به)",
+                            "value": "16:9",
+                            "key": "ratio-16-9"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "16:9 (عريض - موصى به)",
+                            "value": "16:9",
+                            "key": "ratio-16-9"
+                        },
+                        {
+                            "label": "21:9 (عريض جداً - سينمائي)",
+                            "value": "21:9",
+                            "key": "ratio-21-9"
+                        },
+                        {
+                            "label": "3:2 (متوازن)",
+                            "value": "3:2",
+                            "key": "ratio-3-2"
+                        },
+                        {
+                            "label": "4:3 (تقليدي)",
+                            "value": "4:3",
+                            "key": "ratio-4-3"
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "height_mobile",
+                    "type": "number",
+                    "format": "range",
+                    "label": "ارتفاع Hero على الموبايل",
+                    "description": "تحكم في ارتفاع القسم على شاشات الموبايل",
+                    "icon": "sicon-vertical-align-center",
+                    "min": 300,
+                    "max": 600,
+                    "step": 10,
+                    "value": 450,
+                    "unit": "px"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-content",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #48bb78; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>✍️ المحتوى النصي</h6></div>"
+                },
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "placeholder": "مثال: أشهى الأطباق في مدينتك",
+                    "multilanguage": true,
+                    "icon": "sicon-format-text-alt",
+                    "required": false,
+                    "value": {
+                        "ar": "اكتشف نكهات لا تُنسى",
+                        "en": "Discover Unforgettable Flavors"
+                    },
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "النص الفرعي / الوصف",
+                    "placeholder": "نص توضيحي قصير عن المطعم أو العرض الخاص",
+                    "multilanguage": true,
+                    "icon": "sicon-typography",
+                    "required": false,
+                    "value": {
+                        "ar": "تجربة طعام فريدة مع أجود المكونات الطازجة",
+                        "en": "A unique dining experience with the finest fresh ingredients"
+                    },
+                    "minLength": 0,
+                    "maxLength": 200
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-button",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #ed8936; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>🔘 زر الإجراء (CTA)</h6></div>"
+                },
+                {
+                    "id": "button_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الزر",
+                    "placeholder": "مثال: اطلب الآن، تصفح القائمة، احجز طاولة",
+                    "multilanguage": true,
+                    "icon": "sicon-cursor-click",
+                    "required": false,
+                    "value": {
+                        "ar": "اطلب الآن",
+                        "en": "Order Now"
+                    },
+                    "minLength": 0,
+                    "maxLength": 50
+                },
+                {
+                    "id": "button_link",
+                    "type": "items",
+                    "format": "variable-list",
+                    "label": "رابط الزر",
+                    "description": "اختر الصفحة أو الرابط الذي سينتقل له عند الضغط على الزر",
+                    "icon": "sicon-link",
+                    "searchable": true,
+                    "source": "custom",
+                    "required": false,
+                    "value": [],
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-alignment",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #9f7aea; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>📐 محاذاة المحتوى</h6></div>"
+                },
+                {
+                    "id": "content_align",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "المحاذاة الأفقية",
+                    "description": "موقع النص أفقياً على الصورة",
+                    "icon": "sicon-align-justify",
+                    "selected": [
+                        {
+                            "label": "في المنتصف",
+                            "value": "center",
+                            "key": "align-center"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "البداية (يمين في العربي)",
+                            "value": "start",
+                            "key": "align-start"
+                        },
+                        {
+                            "label": "في المنتصف",
+                            "value": "center",
+                            "key": "align-center"
+                        },
+                        {
+                            "label": "النهاية (يسار في العربي)",
+                            "value": "end",
+                            "key": "align-end"
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "content_vertical",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "المحاذاة العمودية",
+                    "description": "موقع النص عمودياً على الصورة",
+                    "icon": "sicon-vertical-align-center",
+                    "selected": [
+                        {
+                            "label": "في المنتصف",
+                            "value": "center",
+                            "key": "vertical-center"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "أعلى الصورة",
+                            "value": "top",
+                            "key": "vertical-top"
+                        },
+                        {
+                            "label": "في المنتصف",
+                            "value": "center",
+                            "key": "vertical-center"
+                        },
+                        {
+                            "label": "أسفل الصورة",
+                            "value": "bottom",
+                            "key": "vertical-bottom"
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-overlay",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #4a5568; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>🎨 الطبقة الداكنة (Overlay)</h6></div>"
+                },
+                {
+                    "id": "overlay_enable",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الطبقة الداكنة",
+                    "description": "طبقة شفافة لتحسين وضوح النص على الصورة",
+                    "icon": "sicon-toggle-off",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "overlay_opacity",
+                    "type": "number",
+                    "format": "range",
+                    "label": "شفافية الطبقة الداكنة",
+                    "description": "0 = شفاف تماماً، 100 = معتم تماماً",
+                    "icon": "sicon-opacity",
+                    "min": 0,
+                    "max": 100,
+                    "step": 5,
+                    "value": 50,
+                    "unit": "%",
+                    "conditions": [
+                        {
+                            "id": "overlay_enable",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "overlay_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون الطبقة الداكنة",
+                    "icon": "sicon-color-palette",
+                    "required": false,
+                    "value": "#000000",
+                    "conditions": [
+                        {
+                            "id": "overlay_enable",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-colors",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #e53e3e; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>🌈 الألوان</h6></div>"
+                },
+                {
+                    "id": "text_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون النص (العنوان والوصف)",
+                    "icon": "sicon-color-palette",
+                    "required": false,
+                    "value": "#ffffff"
+                },
+                {
+                    "id": "button_bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون خلفية الزر",
+                    "icon": "sicon-color-palette",
+                    "required": false,
+                    "value": "#e63946"
+                },
+                {
+                    "id": "button_text_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون نص الزر",
+                    "icon": "sicon-color-palette",
+                    "required": false,
+                    "value": "#ffffff"
+                }
+            ]
+        },
+        {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
             "title": {
                 "en": "Enhances Animated Images",

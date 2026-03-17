@@ -1,0 +1,422 @@
+/**
+ * Hero Section Styles
+ * ثيم سُفرة (Sufrah) - Restaurant Theme
+ *
+ * Mobile-First Approach: 375px → 768px → 1024px+
+ * RTL-Native: Using logical CSS properties
+ */
+
+/* ==========================================================================
+   Hero Section Container
+   ========================================================================== */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    /* Mobile: ارتفاع متغير من Dashboard */
+    min-height: var(--hero-mobile-height, 450px);
+
+    /* Tablet: زيادة الارتفاع */
+    @media (min-width: 768px) {
+        min-height: 500px;
+    }
+
+    /* Desktop: ارتفاع كامل حسب aspect ratio */
+    @media (min-width: 1024px) {
+        min-height: 600px;
+    }
+}
+
+/* ==========================================================================
+   Aspect Ratios
+   ========================================================================== */
+
+.aspect-ratio-16-9 {
+    @media (min-width: 1024px) {
+        aspect-ratio: 16 / 9;
+        min-height: auto;
+    }
+}
+
+.aspect-ratio-21-9 {
+    @media (min-width: 1024px) {
+        aspect-ratio: 21 / 9;
+        min-height: auto;
+    }
+}
+
+.aspect-ratio-3-2 {
+    @media (min-width: 1024px) {
+        aspect-ratio: 3 / 2;
+        min-height: auto;
+    }
+}
+
+.aspect-ratio-4-3 {
+    @media (min-width: 1024px) {
+        aspect-ratio: 4 / 3;
+        min-height: auto;
+    }
+}
+
+/* ==========================================================================
+   Background Image
+   ========================================================================== */
+
+.hero-background {
+    position: absolute;
+    inset: 0; /* top, right, bottom, left - RTL safe */
+    z-index: 1;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* ==========================================================================
+   Overlay (الطبقة الداكنة)
+   ========================================================================== */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none; /* لا تتداخل مع النقرات */
+
+    /* opacity and background-color from inline styles (customizer) */
+}
+
+/* ==========================================================================
+   Content Container
+   ========================================================================== */
+
+.hero-section .container {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    min-height: inherit;
+
+    /* Mobile: padding أصغر */
+    padding-inline: 20px;
+    padding-block: 40px;
+
+    /* Tablet: padding متوسط */
+    @media (min-width: 768px) {
+        padding-inline: 40px;
+        padding-block: 60px;
+    }
+
+    /* Desktop: padding أكبر */
+    @media (min-width: 1024px) {
+        padding-inline: 60px;
+        padding-block: 80px;
+        max-width: 1400px;
+        margin-inline: auto;
+    }
+}
+
+/* ==========================================================================
+   Hero Content Wrapper
+   ========================================================================== */
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: inherit;
+
+    /* Color from CSS variable (set in twig) */
+    color: var(--hero-text-color, #ffffff);
+}
+
+/* Horizontal Alignment */
+.hero-content[data-align="start"] {
+    align-items: flex-start;
+    text-align: start; /* RTL-aware */
+}
+
+.hero-content[data-align="center"] {
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content[data-align="end"] {
+    align-items: flex-end;
+    text-align: end; /* RTL-aware */
+}
+
+/* Vertical Alignment */
+.hero-content[data-vertical="top"] {
+    justify-content: flex-start;
+}
+
+.hero-content[data-vertical="center"] {
+    justify-content: center;
+}
+
+.hero-content[data-vertical="bottom"] {
+    justify-content: flex-end;
+}
+
+/* ==========================================================================
+   Hero Title
+   ========================================================================== */
+
+.hero-title {
+    margin: 0;
+    margin-block-end: 16px; /* Logical property - bottom in LTR, bottom in RTL */
+
+    /* Mobile: حجم خط متوسط */
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    /* Tablet: حجم أكبر */
+    @media (min-width: 768px) {
+        font-size: 42px;
+        margin-block-end: 20px;
+    }
+
+    /* Desktop: حجم كبير جداً */
+    @media (min-width: 1024px) {
+        font-size: 56px;
+        margin-block-end: 24px;
+    }
+
+    /* Text shadow للوضوح على الصور */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    /* Max width للقراءة */
+    max-width: 800px;
+}
+
+/* ==========================================================================
+   Hero Subtitle
+   ========================================================================== */
+
+.hero-subtitle {
+    margin: 0;
+    margin-block-end: 32px;
+
+    /* Mobile: حجم قراءة مريح */
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    opacity: 0.95;
+
+    /* Tablet: حجم أكبر قليلاً */
+    @media (min-width: 768px) {
+        font-size: 18px;
+        line-height: 1.7;
+        margin-block-end: 36px;
+    }
+
+    /* Desktop: حجم واضح */
+    @media (min-width: 1024px) {
+        font-size: 20px;
+        line-height: 1.8;
+        margin-block-end: 40px;
+    }
+
+    /* Text shadow خفيف */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+    /* Max width للقراءة */
+    max-width: 600px;
+}
+
+/* ==========================================================================
+   CTA Button
+   ========================================================================== */
+
+.hero-button-wrapper {
+    /* مساحة إضافية للزر */
+    margin-block-start: 8px;
+}
+
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    /* Mobile: Touch target لا يقل عن 48px */
+    min-height: 48px;
+    min-width: 120px;
+    padding-inline: 28px;
+    padding-block: 12px;
+
+    /* Tablet: أكبر قليلاً */
+    @media (min-width: 768px) {
+        min-height: 52px;
+        padding-inline: 32px;
+        padding-block: 14px;
+        font-size: 17px;
+    }
+
+    /* Desktop: حجم مريح */
+    @media (min-width: 1024px) {
+        min-height: 56px;
+        padding-inline: 40px;
+        padding-block: 16px;
+        font-size: 18px;
+    }
+
+    /* Typography */
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1;
+
+    /* Border & Radius */
+    border: none;
+    border-radius: 8px;
+
+    /* Shadow للعمق */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    /* Transition smooth */
+    transition: all 0.3s ease;
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Colors from inline styles (customizer) */
+    /* background-color & color set in twig */
+
+    /* Hover Effect - Desktop only */
+    @media (min-width: 1024px) {
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    /* Active State - All devices */
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Focus State - Accessibility */
+    &:focus {
+        outline: 3px solid rgba(255, 255, 255, 0.5);
+        outline-offset: 3px;
+    }
+}
+
+/* ==========================================================================
+   Button Icon (Arrow)
+   ========================================================================== */
+
+.hero-button-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+
+    /* RTL: Flip the arrow in RTL mode */
+    [dir="rtl"] & {
+        transform: scaleX(-1);
+    }
+
+    /* Smooth transition */
+    transition: transform 0.3s ease;
+
+    /* Move on hover (desktop only) */
+    @media (min-width: 1024px) {
+        .hero-button:hover & {
+            /* Move to the end (right in LTR, left in RTL) */
+            transform: translateX(4px);
+
+            [dir="rtl"] & {
+                transform: translateX(-4px) scaleX(-1);
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   Responsive Optimizations
+   ========================================================================== */
+
+/* Small Mobile (< 375px) */
+@media (max-width: 374px) {
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-section .container {
+        padding-inline: 16px;
+        padding-block: 30px;
+    }
+}
+
+/* Large Desktop (> 1400px) */
+@media (min-width: 1400px) {
+    .hero-title {
+        font-size: 64px;
+    }
+
+    .hero-subtitle {
+        font-size: 22px;
+    }
+}
+
+/* ==========================================================================
+   Accessibility Improvements
+   ========================================================================== */
+
+/* Reduce motion for users with motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+    .hero-button {
+        transition: none;
+    }
+
+    .hero-button-icon {
+        transition: none;
+    }
+
+    .hero-button:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero-title,
+    .hero-subtitle {
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-button {
+        border: 2px solid currentColor;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .hero-section {
+        min-height: auto;
+        page-break-inside: avoid;
+    }
+
+    .hero-button {
+        display: none; /* Hide interactive elements in print */
+    }
+
+    .hero-overlay {
+        opacity: 0 !important; /* Remove overlay for better print */
+    }
+}

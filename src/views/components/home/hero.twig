@@ -1,0 +1,111 @@
+{#
+    Hero Section Component
+    القسم الرئيسي - سُفرة (Sufrah) Restaurant Theme
+
+    Features:
+    - Background image (desktop + mobile)
+    - Title + Subtitle
+    - CTA button
+    - Overlay with adjustable opacity
+    - Full customization via Dashboard
+#}
+
+{# تحديد الصورة المناسبة حسب الجهاز #}
+{% set heroImage = component.background_image %}
+{% set heroImageMobile = component.background_image_mobile ?? heroImage %}
+
+{# تحديد نسبة العرض (aspect ratio) #}
+{% set aspectRatio = component.aspect_ratio ?? '16:9' %}
+{% set aspectRatios = {
+    '16:9': 'aspect-ratio-16-9',
+    '21:9': 'aspect-ratio-21-9',
+    '3:2': 'aspect-ratio-3-2',
+    '4:3': 'aspect-ratio-4-3'
+} %}
+
+{# تحديد محاذاة المحتوى #}
+{% set contentAlign = component.content_align ?? 'center' %}
+{% set contentVertical = component.content_vertical ?? 'center' %}
+
+{# الألوان #}
+{% set textColor = component.text_color ?? '#ffffff' %}
+{% set buttonBgColor = component.button_bg_color ?? '#e63946' %}
+{% set buttonTextColor = component.button_text_color ?? '#ffffff' %}
+{% set overlayColor = component.overlay_color ?? '#000000' %}
+{% set overlayOpacity = component.overlay_opacity ?? 50 %}
+
+{# ارتفاع الموبايل #}
+{% set mobileHeight = component.height_mobile ?? 450 %}
+
+<section class="hero-section {{ aspectRatios[aspectRatio] ?? aspectRatios['16:9'] }}"
+         data-aspect-ratio="{{ aspectRatio }}"
+         style="--hero-mobile-height: {{ mobileHeight }}px; --hero-text-color: {{ textColor }};">
+
+    {# صورة الخلفية #}
+    <div class="hero-background">
+        {# صورة للموبايل #}
+        <picture>
+            <source media="(max-width: 767px)"
+                    srcset="{{ heroImageMobile }}">
+            <source media="(min-width: 768px)"
+                    srcset="{{ heroImage }}">
+            <img src="{{ heroImage }}"
+                 alt="{{ component.title ?? store.name }}"
+                 class="hero-image"
+                 loading="eager">
+        </picture>
+
+        {# الطبقة الداكنة (Overlay) #}
+        {% if component.overlay_enable %}
+            <div class="hero-overlay"
+                 style="background-color: {{ overlayColor }}; opacity: {{ overlayOpacity / 100 }};"></div>
+        {% endif %}
+    </div>
+
+    {# محتوى الـ Hero #}
+    <div class="container">
+        <div class="hero-content"
+             data-align="{{ contentAlign }}"
+             data-vertical="{{ contentVertical }}">
+
+            {# العنوان الرئيسي #}
+            {% if component.title %}
+                <h1 class="hero-title">
+                    {{ component.title }}
+                </h1>
+            {% endif %}
+
+            {# النص الفرعي #}
+            {% if component.subtitle %}
+                <p class="hero-subtitle">
+                    {{ component.subtitle }}
+                </p>
+            {% endif %}
+
+            {# زر الـ Call-to-Action #}
+            {% if component.button_text and component.button_link %}
+                <div class="hero-button-wrapper">
+                    <a href="{{ component.button_link }}"
+                       class="hero-button"
+                       style="background-color: {{ buttonBgColor }}; color: {{ buttonTextColor }};">
+                        {{ component.button_text }}
+
+                        {# أيقونة السهم (تنقلب في RTL) #}
+                        <svg class="hero-button-icon"
+                             width="20"
+                             height="20"
+                             viewBox="0 0 20 20"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 15L12.5 10L7.5 5"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
