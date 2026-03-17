@@ -236,6 +236,157 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+            "type": "static",
+            "id": "static-line-product-sufrah",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-product-sufrah",
+            "value": "<div class='rounded-lg' style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'>🍽️ إعدادات المطاعم - سُفرة</h6><p style='color: #ffffff; opacity: 0.9; margin: 0; font-size: 13px;'>تحسينات خاصة لصفحة المنتج</p></div>",
+            "variant": "h6"
+        },
+        {
+            "id": "product_gallery_layout_sufrah",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "تخطيط معرض الصور",
+            "description": "اختر كيف تظهر صور المنتج الإضافية",
+            "icon": "sicon-image-carousel",
+            "selected": [
+                {
+                    "label": "أسفل الصورة الرئيسية (افتراضي)",
+                    "value": "bottom",
+                    "key": "gallery-bottom"
+                }
+            ],
+            "options": [
+                {
+                    "label": "أسفل الصورة الرئيسية (افتراضي)",
+                    "value": "bottom",
+                    "key": "gallery-bottom"
+                },
+                {
+                    "label": "على الجانب (يمين في LTR، يسار في RTL)",
+                    "value": "side",
+                    "key": "gallery-side"
+                }
+            ],
+            "required": false
+        },
+        {
+            "id": "product_image_size_sufrah",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "حجم صورة المنتج",
+            "description": "تحكم في حجم عرض الصورة الرئيسية",
+            "icon": "sicon-crop",
+            "selected": [
+                {
+                    "label": "عادي (افتراضي)",
+                    "value": "normal",
+                    "key": "size-normal"
+                }
+            ],
+            "options": [
+                {
+                    "label": "عادي (افتراضي)",
+                    "value": "normal",
+                    "key": "size-normal"
+                },
+                {
+                    "label": "كبير",
+                    "value": "large",
+                    "key": "size-large"
+                },
+                {
+                    "label": "كبير جداً",
+                    "value": "xlarge",
+                    "key": "size-xlarge"
+                }
+            ],
+            "required": false
+        },
+        {
+            "id": "product_price_emphasis_sufrah",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "حجم السعر",
+            "description": "اجعل السعر أكثر بروزاً للمطاعم",
+            "icon": "sicon-money",
+            "selected": [
+                {
+                    "label": "عادي (افتراضي)",
+                    "value": "normal",
+                    "key": "price-normal"
+                }
+            ],
+            "options": [
+                {
+                    "label": "عادي (افتراضي)",
+                    "value": "normal",
+                    "key": "price-normal"
+                },
+                {
+                    "label": "كبير (موصى به للمطاعم)",
+                    "value": "large",
+                    "key": "price-large"
+                }
+            ],
+            "required": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "زر ثابت للإضافة على الموبايل",
+            "description": "يظهر زر الإضافة للسلة ثابت أسفل الشاشة عند التمرير (موبايل فقط)",
+            "id": "product_sticky_cart_mobile_sufrah",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار قسم المكونات",
+            "description": "عرض قسم المكونات إذا كان متوفراً في وصف المنتج",
+            "id": "product_show_ingredients_sufrah",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار تحذيرات الحساسية",
+            "description": "عرض تحذيرات الحساسية إذا كانت متوفرة",
+            "id": "product_show_allergens_sufrah",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار المعلومات الغذائية",
+            "description": "عرض السعرات الحرارية والمعلومات الغذائية إذا كانت متوفرة",
+            "id": "product_show_nutrition_sufrah",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "static",
+            "format": "description",
+            "id": "product-sufrah-note",
+            "value": "<div style='background-color: #fffbeb; border: 1px solid #fcd34d; border-radius: 8px; padding: 12px; margin-top: 16px;'><strong style='color: #92400e;'>ℹ️ ملاحظة:</strong> <span style='color: #78350f; font-size: 13px;'>الأقسام الإضافية (المكونات، الحساسية، التغذية) تحتاج أن تكون مكتوبة في وصف المنتج بتنسيق معين لتظهر.</span></div>"
         }
     ],
     "components": [
@@ -587,6 +738,275 @@
                     "icon": "sicon-color-palette",
                     "required": false,
                     "value": "#ffffff"
+                }
+            ]
+        },
+        {
+            "key": "products-grid-sufrah-2026",
+            "title": {
+                "ar": "قسم المنتجات (Grid/List/Menu) - سُفرة",
+                "en": "Products Section (Grid/List/Menu) - Sufrah"
+            },
+            "icon": "sicon-box",
+            "path": "home.products-section",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "products-preview",
+                    "value": "<div style='background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 24px; border-radius: 12px; color: white; text-align: center; margin-bottom: 20px;'><h3 style='margin: 0 0 8px 0; font-size: 18px; font-weight: bold;'>🍕 عرض المنتجات للمطاعم</h3><p style='margin: 0; font-size: 14px; opacity: 0.9;'>3 أنماط عرض: Grid, List, Menu - مثالي لقوائم الطعام</p></div>"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-content-products",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #4299e1; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>📝 المحتوى</h6></div>"
+                },
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم (اختياري)",
+                    "placeholder": "مثال: قائمتنا المميزة، الأطباق الرئيسية",
+                    "multilanguage": true,
+                    "icon": "sicon-format-text-alt",
+                    "required": false,
+                    "value": null,
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "نص فرعي (اختياري)",
+                    "placeholder": "وصف قصير للقسم",
+                    "multilanguage": true,
+                    "icon": "sicon-typography",
+                    "required": false,
+                    "value": null,
+                    "minLength": 0,
+                    "maxLength": 200
+                },
+                {
+                    "id": "products",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختر المنتجات",
+                    "description": "اختر المنتجات التي تريد عرضها في هذا القسم",
+                    "icon": "sicon-box",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "searchable": true,
+                    "source": "products",
+                    "minLength": 1,
+                    "maxLength": 20
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-layout",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #48bb78; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>📐 نمط العرض</h6></div>"
+                },
+                {
+                    "id": "layout",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نمط العرض",
+                    "description": "Grid = شبكة، List = قائمة، Menu = قائمة طعام (كلاسيكية)",
+                    "icon": "sicon-layout-grid-rearrange",
+                    "selected": [
+                        {
+                            "label": "شبكة (Grid)",
+                            "value": "grid",
+                            "key": "layout-grid"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "شبكة (Grid)",
+                            "value": "grid",
+                            "key": "layout-grid"
+                        },
+                        {
+                            "label": "قائمة (List)",
+                            "value": "list",
+                            "key": "layout-list"
+                        },
+                        {
+                            "label": "قائمة طعام (Menu)",
+                            "value": "menu",
+                            "key": "layout-menu"
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "per_row",
+                    "type": "number",
+                    "format": "range",
+                    "label": "عدد المنتجات في الصف",
+                    "description": "ينطبق على نمط Grid فقط (Desktop)",
+                    "icon": "sicon-grid-view",
+                    "min": 2,
+                    "max": 4,
+                    "step": 1,
+                    "value": 4,
+                    "unit": "منتج",
+                    "conditions": [
+                        {
+                            "id": "layout",
+                            "operation": "=",
+                            "value": "grid"
+                        }
+                    ]
+                },
+                {
+                    "id": "image_ratio",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نسبة صورة المنتج",
+                    "description": "نسبة العرض إلى الارتفاع للصور",
+                    "icon": "sicon-crop",
+                    "selected": [
+                        {
+                            "label": "1:1 (مربع - موصى به)",
+                            "value": "1:1",
+                            "key": "ratio-1-1"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "1:1 (مربع - موصى به)",
+                            "value": "1:1",
+                            "key": "ratio-1-1"
+                        },
+                        {
+                            "label": "4:3 (أفقي)",
+                            "value": "4:3",
+                            "key": "ratio-4-3"
+                        },
+                        {
+                            "label": "16:9 (عريض)",
+                            "value": "16:9",
+                            "key": "ratio-16-9"
+                        }
+                    ],
+                    "required": true
+                },
+                {
+                    "id": "spacing",
+                    "type": "number",
+                    "format": "range",
+                    "label": "المسافة بين المنتجات",
+                    "description": "تحكم في المسافات الفاصلة",
+                    "icon": "sicon-arrows-expand",
+                    "min": 10,
+                    "max": 40,
+                    "step": 5,
+                    "value": 20,
+                    "unit": "px"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-display",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #9f7aea; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>👁️ خيارات العرض</h6></div>"
+                },
+                {
+                    "id": "show_description",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار وصف المنتج",
+                    "description": "عرض وصف قصير تحت اسم المنتج",
+                    "icon": "sicon-toggle-off",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "description_length",
+                    "type": "number",
+                    "format": "range",
+                    "label": "طول الوصف",
+                    "description": "عدد الأحرف المعروضة من الوصف",
+                    "icon": "sicon-text-width",
+                    "min": 50,
+                    "max": 200,
+                    "step": 10,
+                    "value": 100,
+                    "unit": "حرف",
+                    "conditions": [
+                        {
+                            "id": "show_description",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "show_tags",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار وسوم المنتج",
+                    "description": "عرض وسوم/تصنيفات المنتج",
+                    "icon": "sicon-toggle-off",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "hover_effect",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تأثير Hover على المنتجات",
+                    "description": "تأثير حركي عند مرور الماوس (Desktop فقط)",
+                    "icon": "sicon-toggle-off",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "section-footer-products",
+                    "value": "<div style='background-color: #f7fafc; padding: 12px 16px; border-radius: 8px; border-right: 4px solid #ed8936; margin: 20px 0;'><h6 style='margin: 0; color: #2d3748; font-size: 15px; font-weight: 600;'>🔗 زر عرض الكل</h6></div>"
+                },
+                {
+                    "id": "show_all_link",
+                    "type": "items",
+                    "format": "variable-list",
+                    "label": "رابط \"عرض الكل\"",
+                    "description": "رابط لصفحة جميع المنتجات (اختياري)",
+                    "icon": "sicon-link",
+                    "searchable": true,
+                    "source": "custom",
+                    "required": false,
+                    "value": [],
+                    "sources": [
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "جميع المنتجات",
+                            "key": "products_link",
+                            "value": "products_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
                 }
             ]
         },

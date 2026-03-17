@@ -1,0 +1,477 @@
+/**
+ * Product Page Enhancements - Restaurant Style
+ * ثيم سُفرة (Sufrah) - Restaurant Theme
+ *
+ * Enhancements:
+ * - Larger image gallery
+ * - Prominent pricing
+ * - Sticky mobile cart button
+ * - Optional info sections (ingredients, allergens, nutrition)
+ *
+ * Mobile-First: 375px → 768px → 1024px+
+ * RTL-Native: Logical CSS Properties
+ */
+
+/* ==========================================================================
+   Gallery Layout Enhancements
+   ========================================================================== */
+
+/* Gallery Side Layout (when enabled) */
+[data-gallery-layout="side"] .product-single__images {
+    @media (min-width: 1024px) {
+        display: flex;
+        flex-direction: row-reverse; /* Main image first, then thumbnails */
+        gap: 20px;
+    }
+}
+
+[data-gallery-layout="side"] .product-single__main-image {
+    @media (min-width: 1024px) {
+        flex: 1;
+    }
+}
+
+[data-gallery-layout="side"] .product-single__thumbnails {
+    @media (min-width: 1024px) {
+        flex: 0 0 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* ==========================================================================
+   Image Size Variations
+   ========================================================================== */
+
+/* Normal Size (default - no changes needed) */
+
+/* Large Size */
+[data-image-size="large"] .product-single__main-image {
+    @media (min-width: 768px) {
+        max-width: 600px;
+        margin-inline: auto;
+    }
+
+    @media (min-width: 1024px) {
+        max-width: 700px;
+    }
+}
+
+/* XLarge Size */
+[data-image-size="xlarge"] .product-single__main-image {
+    @media (min-width: 768px) {
+        max-width: 700px;
+        margin-inline: auto;
+    }
+
+    @media (min-width: 1024px) {
+        max-width: 900px;
+    }
+}
+
+/* ==========================================================================
+   Price Emphasis (Large)
+   ========================================================================== */
+
+[data-price-size="large"] .product-single__price {
+    /* Mobile: Already prominent */
+    font-size: 28px;
+    font-weight: 800;
+
+    @media (min-width: 768px) {
+        font-size: 36px;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 42px;
+    }
+}
+
+[data-price-size="large"] .product-single__price-original {
+    font-size: 20px;
+
+    @media (min-width: 768px) {
+        font-size: 24px;
+    }
+}
+
+/* Price container styling */
+[data-price-size="large"] .product-single__price-container {
+    padding: 16px;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border-radius: 12px;
+    margin-block: 20px;
+    border: 2px solid #e2e8f0;
+
+    @media (min-width: 768px) {
+        padding: 20px;
+        margin-block: 24px;
+    }
+}
+
+/* ==========================================================================
+   Sticky Mobile Cart Button
+   ========================================================================== */
+
+/* Sticky cart wrapper (mobile only) */
+.product-sticky-cart-mobile {
+    display: none;
+
+    /* Show on mobile when setting is enabled */
+    body[data-sticky-cart="true"] & {
+        display: block;
+        position: fixed;
+        inset-block-end: 0;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        z-index: 100;
+        background: #ffffff;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        padding: 12px 16px;
+        border-block-start: 1px solid #e2e8f0;
+
+        /* Smooth slide-in animation */
+        animation: slideUpCart 0.3s ease-out;
+
+        @media (min-width: 768px) {
+            display: none; /* Hide on tablet/desktop */
+        }
+    }
+}
+
+@keyframes slideUpCart {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sticky cart content */
+.product-sticky-cart-mobile__content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+.product-sticky-cart-mobile__price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2d3748;
+    flex-shrink: 0;
+}
+
+.product-sticky-cart-mobile__button {
+    flex: 1;
+    min-height: 48px;
+    padding: 12px 20px;
+    background: #4299e1;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: #3182ce;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &:disabled {
+        background: #cbd5e0;
+        cursor: not-allowed;
+    }
+}
+
+/* Add padding to body when sticky cart is active to prevent content overlap */
+body[data-sticky-cart="true"] {
+    @media (max-width: 767px) {
+        padding-block-end: 80px;
+    }
+}
+
+/* ==========================================================================
+   Restaurant Info Sections (Ingredients, Allergens, Nutrition)
+   ========================================================================== */
+
+.product-restaurant-info {
+    margin-block-start: 32px;
+    padding-block-start: 32px;
+    border-block-start: 2px solid #e2e8f0;
+
+    @media (min-width: 768px) {
+        margin-block-start: 40px;
+        padding-block-start: 40px;
+    }
+}
+
+.product-restaurant-info__section {
+    margin-block-end: 32px;
+
+    &:last-child {
+        margin-block-end: 0;
+    }
+}
+
+.product-restaurant-info__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    margin-block-end: 16px;
+    color: #1a202c;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (min-width: 768px) {
+        font-size: 22px;
+        margin-block-end: 20px;
+    }
+}
+
+.product-restaurant-info__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.product-restaurant-info__content {
+    padding: 16px;
+    background: #f7fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+
+    @media (min-width: 768px) {
+        padding: 20px;
+    }
+}
+
+/* ==========================================================================
+   Ingredients Section
+   ========================================================================== */
+
+.product-ingredients {
+    /* Base styles inherited from product-restaurant-info */
+}
+
+.product-ingredients__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.product-ingredients__item {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    background: #ffffff;
+    border: 1px solid #cbd5e0;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #4a5568;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: #4299e1;
+        color: #2d3748;
+    }
+
+    /* Icon before text */
+    &::before {
+        content: "✓";
+        margin-inline-end: 6px;
+        color: #48bb78;
+        font-weight: bold;
+    }
+}
+
+/* ==========================================================================
+   Allergens Section (Warning Style)
+   ========================================================================== */
+
+.product-allergens {
+    .product-restaurant-info__content {
+        background: #fffbeb;
+        border-color: #fcd34d;
+    }
+
+    .product-restaurant-info__title {
+        color: #92400e;
+    }
+}
+
+.product-allergens__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.product-allergens__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #fbbf24;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #78350f;
+    font-weight: 500;
+
+    /* Warning icon */
+    &::before {
+        content: "⚠️";
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+}
+
+/* ==========================================================================
+   Nutrition Section
+   ========================================================================== */
+
+.product-nutrition {
+    .product-restaurant-info__content {
+        background: #ecfdf5;
+        border-color: #6ee7b7;
+    }
+
+    .product-restaurant-info__title {
+        color: #065f46;
+    }
+}
+
+.product-nutrition__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.product-nutrition__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    background: #ffffff;
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.product-nutrition__value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #047857;
+    margin-block-end: 4px;
+}
+
+.product-nutrition__label {
+    font-size: 12px;
+    color: #065f46;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Product Description Enhancements
+   ========================================================================== */
+
+.product-single__description {
+    /* Better formatting for restaurant descriptions */
+    line-height: 1.8;
+    color: #4a5568;
+
+    p {
+        margin-block-end: 16px;
+
+        &:last-child {
+            margin-block-end: 0;
+        }
+    }
+
+    /* Better list styling */
+    ul, ol {
+        padding-inline-start: 24px;
+        margin-block: 16px;
+
+        li {
+            margin-block-end: 8px;
+            line-height: 1.6;
+        }
+    }
+}
+
+/* ==========================================================================
+   Accessibility Improvements
+   ========================================================================== */
+
+/* Focus states for sticky button */
+.product-sticky-cart-mobile__button:focus {
+    outline: 3px solid #4299e1;
+    outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .product-sticky-cart-mobile {
+        animation: none;
+    }
+
+    .product-sticky-cart-mobile__button {
+        transition: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .product-restaurant-info__content {
+        border-width: 2px;
+    }
+
+    .product-sticky-cart-mobile {
+        border-block-start-width: 2px;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .product-sticky-cart-mobile {
+        display: none !important;
+    }
+
+    .product-restaurant-info {
+        page-break-inside: avoid;
+    }
+}

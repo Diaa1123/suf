@@ -79,7 +79,11 @@
 
 // Sufrah Restaurant Theme - Custom Sections
 @import './sections/hero';
+@import './sections/products-grid';
 @import './04-components/product';
+
+// Sufrah Restaurant Theme - Page Enhancements
+@import './pages/product-restaurant';
 @import './04-components/brands';
 @import './04-components/no-content-placeholder';
 @import './04-components/gifting';

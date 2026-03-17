@@ -1,0 +1,100 @@
+{#
+    Products Section Component
+    قسم عرض المنتجات - سُفرة (Sufrah) Restaurant Theme
+
+    Features:
+    - 3 Layout modes: Grid, List, Menu
+    - Products per row control (2-4)
+    - Show/hide description
+    - Image aspect ratio options
+    - Adjustable spacing
+    - Hover effects
+#}
+
+{# تحديد نمط العرض #}
+{% set layout = component.layout ?? 'grid' %}
+{% set perRow = component.per_row ?? 4 %}
+{% set showDescription = component.show_description ?? true %}
+{% set descLength = component.description_length ?? 100 %}
+{% set imageRatio = component.image_ratio ?? '1:1' %}
+{% set spacing = component.spacing ?? 20 %}
+{% set hoverEffect = component.hover_effect ?? true %}
+{% set showTags = component.show_tags ?? true %}
+
+{# CSS Classes حسب الإعدادات #}
+{% set layoutClass = 'products-layout-' ~ layout %}
+{% set perRowClass = 'products-per-row-' ~ perRow %}
+{% set imageRatioClass = 'products-ratio-' ~ (imageRatio | replace({':': '-'})) %}
+{% set hoverClass = hoverEffect ? 'products-with-hover' : 'products-no-hover' %}
+
+<section class="products-section {{ layoutClass }} {{ perRowClass }} {{ imageRatioClass }} {{ hoverClass }}"
+         style="--products-spacing: {{ spacing }}px;"
+         data-layout="{{ layout }}"
+         data-per-row="{{ perRow }}">
+
+    <div class="container">
+        {# عنوان القسم (اختياري) #}
+        {% if component.title %}
+            <div class="products-section-header">
+                <h2 class="products-section-title">{{ component.title }}</h2>
+
+                {% if component.subtitle %}
+                    <p class="products-section-subtitle">{{ component.subtitle }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {# المنتجات #}
+        <div class="products-grid">
+            {% if component.products is defined and component.products|length > 0 %}
+                {% for product in component.products %}
+                    {# استخدام Product Card المخصص للمطاعم #}
+                    {% include 'components.product.card-restaurant' with {
+                        product: product,
+                        layout: layout,
+                        show_description: showDescription,
+                        description_length: descLength,
+                        image_ratio: imageRatio,
+                        show_tags: showTags
+                    } %}
+                {% endfor %}
+            {% else %}
+                {# Placeholder إذا لم يتم اختيار منتجات #}
+                <div class="products-placeholder">
+                    <div class="products-placeholder-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="18" rx="2" />
+                            <path d="M2 9h20" />
+                            <path d="M8 13h8" />
+                            <path d="M8 17h5" />
+                        </svg>
+                    </div>
+                    <p class="products-placeholder-text">
+                        {% if lang.code == 'ar' %}
+                            اختر المنتجات التي تريد عرضها من Dashboard
+                        {% else %}
+                            Select products to display from Dashboard
+                        {% endif %}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+
+        {# زر "عرض الكل" (اختياري) #}
+        {% if component.show_all_link and component.show_all_link != '' %}
+            <div class="products-section-footer">
+                <a href="{{ component.show_all_link }}" class="products-view-all-btn">
+                    {% if lang.code == 'ar' %}
+                        عرض جميع المنتجات
+                    {% else %}
+                        View All Products
+                    {% endif %}
+
+                    <svg class="products-view-all-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</section>
