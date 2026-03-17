@@ -783,8 +783,68 @@ salla theme preview     # Preview theme on demo store
 ---
 
 **PROJECT_LOG.md Created:** 2026-03-17
-**Last Updated:** 2026-03-17 - Session 1
-**Next Update:** After PHASE 1 Planning
+**Last Updated:** 2026-03-17 - Session 5 (UUID Fix)
+**Next Update:** After deployment testing
+
+---
+
+## 🔧 SESSION 5: Critical UUID Fix (2026-03-17)
+
+### Issue Reported
+User encountered **"Should by validated UUID"** error when attempting to add Hero or Products Grid components from Salla Dashboard.
+
+### Root Cause Analysis
+Through investigation of twilight.json and comparison with existing Raed components:
+
+1. **Component Keys Format Issue:**
+   - Our custom components used descriptive keys: `"hero-sufrah-2026"`, `"products-grid-sufrah-2026"`
+   - All existing Salla components use UUID v4 format: `"186b3f4f-25cf-4d3c-abca-cef7eed6f0ab"`
+   - Salla Dashboard validates component keys and requires proper UUID format
+
+2. **Variable-List Value Issue:**
+   - Our button_link and show_all_link fields used: `"value": []`
+   - Existing Raed components use: `"value": null`
+   - Empty variable-list fields must be `null`, not empty arrays
+
+### Files Modified
+
+**twilight.json** - 4 changes:
+1. Line 394: Changed component key from `"hero-sufrah-2026"` → `"a7f3d2e1-9b4c-4a5e-8f7d-6c5b4a3e2d1f"`
+2. Line 745: Changed component key from `"products-grid-sufrah-2026"` → `"b8e4c3f2-1a5d-4b6e-9f8e-7d6c5b4a3e2f"`
+3. Line 555: Changed Hero button_link value from `[]` → `null`
+4. Line 987: Changed Products show_all_link value from `[]` → `null`
+
+### Technical Details
+
+**Generated UUIDs:**
+- Hero Section: `a7f3d2e1-9b4c-4a5e-8f7d-6c5b4a3e2d1f`
+- Products Grid: `b8e4c3f2-1a5d-4b6e-9f8e-7d6c5b4a3e2f`
+
+**Build Status:**
+```
+✅ npm run production - SUCCESS
+   CSS: 604 KB (minified)
+   JS: 124 KB (minified)
+   Warnings: 9 (standard Sass deprecations only)
+   Errors: 0
+```
+
+### Resolution
+Component keys now follow Salla's required UUID v4 format, and variable-list fields use proper `null` values for empty state. User should now be able to add components from Dashboard without validation errors.
+
+### Testing Instructions for User
+1. Save any open files in Salla CLI
+2. Run `salla theme push` to upload updated twilight.json
+3. Refresh Dashboard → Homepage Management
+4. Try adding "القسم الرئيسي (Hero) - سُفرة" component
+5. Try adding "قسم المنتجات (Grid/List/Menu) - سُفرة" component
+6. UUID validation error should be resolved
+
+### Lessons Learned
+- **Always use UUID v4 format for component keys** in Salla themes
+- **Use `null` for empty variable-list values**, not `[]`
+- Reference existing Raed components for validation format requirements
+- Salla Dashboard performs strict validation on component structure
 
 ---
 

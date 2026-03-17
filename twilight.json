@@ -391,7 +391,7 @@
     ],
     "components": [
         {
-            "key": "hero-sufrah-2026",
+            "key": "a7f3d2e1-9b4c-4a5e-8f7d-6c5b4a3e2d1f",
             "title": {
                 "ar": "القسم الرئيسي (Hero) - سُفرة",
                 "en": "Hero Section - Sufrah"
@@ -552,7 +552,7 @@
                     "searchable": true,
                     "source": "custom",
                     "required": false,
-                    "value": [],
+                    "value": null,
                     "sources": [
                         {
                             "label": "منتج",
@@ -742,7 +742,7 @@
             ]
         },
         {
-            "key": "products-grid-sufrah-2026",
+            "key": "b8e4c3f2-1a5d-4b6e-9f8e-7d6c5b4a3e2f",
             "title": {
                 "ar": "قسم المنتجات (Grid/List/Menu) - سُفرة",
                 "en": "Products Section (Grid/List/Menu) - Sufrah"
@@ -984,7 +984,7 @@
                     "searchable": true,
                     "source": "custom",
                     "required": false,
-                    "value": [],
+                    "value": null,
                     "sources": [
                         {
                             "label": "تصنيف",
